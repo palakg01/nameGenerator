@@ -1,13 +1,111 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Lato";
+  background-color: #0f1228;
+  overflow-x: hidden;
+  color: #e7e9f0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* header.jsx */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
 }
+
+.header-image {
+  width: auto;
+  /* max-width: 300px; */
+  transition: max-width 1s, min-width 1s;
+}
+
+.header-image-expanded {
+  max-width: 350px;
+  min-width: 250px;
+}
+
+.header-image-contracted {
+  max-width: 150px;
+  min-width: 120px;
+}
+
+.header-title {
+  transition: font-size 1s;
+  font-family: "Gloria Hallelujah", cursive;
+  color: #e7e9f0;
+  /* padding:0 10px; */
+}
+
+.header-title-expanded {
+  font-size: 40px;
+}
+
+.header-title-contracted {
+  font-size: 25px;
+}
+
+/* serachbox.jsx */
+
+.search-container {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 600px;
+  padding: 15px 20px;
+  font-size: 20px;
+  border-radius: 50px;
+  background-color: #e9c9f3;
+  letter-spacing: 1px;
+  border: none;
+  outline: none;
+  box-shadow: 0px 2px 7px 2px #b78ec4;
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .search-input,
+  .header-image {
+    width: 80%;
+  }
+  .header-title-expanded {
+    font-size: 30px;
+  }
+}
+
+.searchbox::placeholder {
+  color: #0f1228;
+}
+
+/* results.jsx */
+
+.result-container {
+  padding: 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* namecard.jsx */
+
+.card-object {
+  color: #e7e9f0;
+  background-color: #282d4f;
+  margin: 20px 20px;
+  min-width: 75px;
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.1);
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  transition: background 0.35s;
+}
+
+.card-object:hover {
+  background-color: #4a5079;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+/* backtotop.jsx */

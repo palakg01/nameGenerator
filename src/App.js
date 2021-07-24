@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./index.css";
+import Header from "./components/Header";
+import Results from "./components/Results";
+import Searchbox from "./components/Searchbox";
+import BacktoTop from "./components/BacktoTop";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const name = require("@rstacruz/startup-name-generator");
+
+class App extends React.Component {
+  state = {
+    headerText: "Name Generator",
+    expanded: true,
+    suggestedNames: [],
+  };
+
+  handleInputChange = (inputtext) => {
+    this.setState({
+      expanded: !(inputtext.length > 0),
+      suggestedNames: name(inputtext),
+    });
+  };
+
+  render() {
+    return (
+      <>
+        <Header
+          headerTitle={this.state.headerText}
+          headerExpanded={this.state.expanded}
+        />
+        <Searchbox inputChangeProp={this.handleInputChange} />
+        <Results
+          nameArr={this.state.suggestedNames}
+          display={this.state.expanded}
+        />
+        <BacktoTop />
+      </>
+    );
+  }
 }
 
 export default App;
